@@ -14,14 +14,14 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: false
-      matrix:
-        php: [ '8.4' ]
-        setup: [ 'stable' ]
-
     steps:
-    - uses: actions/checkout@v4
+    - name: 📥 Checkout repo
+      uses: actions/checkout@v4
+
+    - name: 🛠️ Setup PHP 8.4
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.4'
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
